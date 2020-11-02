@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "demo": "webpack-dev-server --open",
-    "test": "jest"
+    "test": "jest",
+    "test-no-cleanup": "RTL_SKIP_AUTO_CLEANUP=true jest"
   },
   "dependencies": {
     "react": "16.10.2",

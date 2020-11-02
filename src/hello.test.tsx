@@ -1,16 +1,19 @@
+import {render} from "@testing-library/react";
 import React from 'react';
-import {render, fireEvent} from "@testing-library/react";
 import Hello from "./hello";
 
-
 describe('Hello', () => {
-  test('handle onChange', () => {
-    const mockOnChange = jest.fn()
-    const wrapper = render(<Hello name='typescript' onChange={mockOnChange}/>)
-    const inputNode = wrapper.container.querySelector('input')!
 
-    fireEvent.change(inputNode, {target: {value: 'react'}});
-
-    expect(mockOnChange).toHaveBeenCalledWith('react');
+  it('check content', () => {
+    render(<Hello/>)
+    const hellos = Array.from(document.querySelectorAll('.hello'))
+    expect(hellos).toHaveLength(1);
   });
+
+  it('check content again to see if it is cleaned up', () => {
+    render(<Hello/>)
+    const hellos = Array.from(document.querySelectorAll('.hello'))
+    expect(hellos).toHaveLength(1);
+  });
+
 })
